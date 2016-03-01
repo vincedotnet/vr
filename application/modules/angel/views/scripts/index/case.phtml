@@ -134,7 +134,7 @@
                     $firstbigimg = "style='background-image:url(". $firstbigimg .");'";
                 }
                 ?>
-                <div class="bist04" <?php echo $firstbigimg ?>></div>
+                <div class="bist04" id="bigshowfrm" <?php echo $firstbigimg ?>></div>
             </div>
             <div>
                 <span class="detailgallerylr lt iconfont icon-angleleft"></span>
@@ -151,7 +151,7 @@
                             }
                             ?>
 
-                            <div class="detailgalleryitm <?php echo $clse ?>"
+                            <div source="<?php echo $this->photoImage($p->name . $p->type, 'large') ?>" class="detailgalleryitm <?php echo $clse ?>"
                                  style="background-image: url(<?php echo $this->photoImage($p->name . $p->type, 'main') ?>);">
                                 <div class="clr"></div>
                             </div>
@@ -209,71 +209,17 @@
             }
             ?>
             <?php endforeach; ?>
-            <!--        <div class="row">-->
-            <!--            <div class="col-xs-3 ceitem selected" id="cp01">-->
-            <!--                <a href="detail.html" class="ceitemct">-->
-            <!--                    <img src="img/photos/t01.jpg" class="img" />-->
-            <!--                </a>-->
-            <!--                <a href="detail.html" class="txt">VAB</a>-->
-            <!--                <div class="txt2"><a href="category.html">商品类</a>, <a href="category.html">文化类</a></div>-->
-            <!--            </div>-->
-            <!--            <div class="col-xs-3 ceitem" id="cp02">-->
-            <!--                <a href="detail.html" class="ceitemct">-->
-            <!--                    <img src="img/photos/t02.jpg" class="img" />-->
-            <!--                </a>-->
-            <!--                <a href="detail.html" class="txt">YIU</a>-->
-            <!--                <div class="txt2"><a href="category.html">企划类</a></div>-->
-            <!--            </div>-->
-            <!--            <div class="col-xs-3 ceitem" id="cp03">-->
-            <!--                <a href="detail.html" class="ceitemct">-->
-            <!--                    <img src="img/photos/t03.jpg" class="img" />-->
-            <!--                </a>-->
-            <!--                <a href="detail.html" class="txt">EYEMARKER</a>-->
-            <!--                <div class="txt2"><a href="category.html">竞技类</a></div>-->
-            <!--            </div>-->
-            <!--            <div class="col-xs-3 ceitem" id="cp04">-->
-            <!--                <a href="detail.html" class="ceitemct">-->
-            <!--                    <img src="img/photos/t02.jpg" class="img" />-->
-            <!--                </a>-->
-            <!--                <a href="detail.html" class="txt">YIU</a>-->
-            <!--                <div class="txt2"><a href="category.html">企划类</a></div>-->
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--        <div class="row">-->
-            <!--            <div class="col-xs-3 ceitem" id="cp05">-->
-            <!--                <a href="detail.html" class="ceitemct">-->
-            <!--                    <img src="img/photos/t07.jpg" class="img" />-->
-            <!--                </a>-->
-            <!--                <a href="detail.html" class="txt">UYU</a>-->
-            <!--                <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
-            <!--            </div>-->
-            <!--            <div class="col-xs-3 ceitem" id="cp06">-->
-            <!--                <a href="detail.html" class="ceitemct">-->
-            <!--                    <img src="img/photos/t08.jpg" class="img" />-->
-            <!--                </a>-->
-            <!--                <a href="detail.html" class="txt">XIPHIAS CUT</a>-->
-            <!--                <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
-            <!--            </div>-->
-            <!--            <div class="col-xs-3 ceitem" id="cp07">-->
-            <!--                <a href="detail.html" class="ceitemct">-->
-            <!--                    <img src="img/photos/t09.jpg" class="img" />-->
-            <!--                </a>-->
-            <!--                <a href="detail.html" class="txt">BOOMSTYLE</a>-->
-            <!--                <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
-            <!--            </div>-->
-            <!--            <div class="col-xs-3 ceitem" id="cp08">-->
-            <!--                <a href="detail.html" class="ceitemct">-->
-            <!--                    <img src="img/photos/t09.jpg" class="img" />-->
-            <!--                </a>-->
-            <!--                <a href="detail.html" class="txt">BOOMSTYLE</a>-->
-            <!--                <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
-            <!--            </div>-->
-            <!--        </div>-->
+
         </div>
     </div>
 
     <script type="text/javascript">
         $(document).ready(function () {
             $('#tab_2').addClass('selected');
+
+            $('.detailgalleryitm').click(function(){
+                var imgurl = $(this).attr('source');
+                $('#bigshowfrm').css('background-image', 'url("' + imgurl +'")');
+            });
         })
     </script>
