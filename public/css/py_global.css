@@ -313,6 +313,7 @@ a:hover {
 }
 
 .ceitem .img {
+    cursor: pointer;
     width: 100%;
 }
 
@@ -339,6 +340,7 @@ a:hover {
 }
 
 .ceitem .txt {
+    cursor:pointer;
     color: #5B6587;
 }
 

@@ -19,7 +19,7 @@
             <?php if ($c == 0) :?>
                 <div class="row">
             <?php endif; ?>
-                <div class="col-xs-4 ceitem" id="cp01" onclick="location.href='/home/case/<?php echo $p->id ?>'">
+                <div class="col-xs-4 ceitem" id="<?php echo $p->id ?>" onclick="location.href='/home/case/<?php echo $p->id ?>'">
                     <div class="ceitemct">
                         <img src="<?php echo $this->photoImage($p->photo[0]->name . $p->photo[0]->type, 'main') ?>" class="img" />
                     </div>
@@ -110,4 +110,7 @@
 <!--            </div>-->
 <!--        </div>-->
     </div>
+
+
+
 </div>
