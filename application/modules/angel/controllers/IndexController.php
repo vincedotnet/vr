@@ -143,6 +143,7 @@ class Angel_IndexController extends Angel_Controller_Action {
         $categorys = $categoryModel->getAll(false);
 
 //        $this->view->resource = $cases;
+        $this->view->cid = $category_id;
         $this->view->paginator = $paginator;
         $this->view->categorys = $categorys;
     }

@@ -13,9 +13,21 @@
         <div class="row">
             <div class="col-xs-2">
                 <ul class="categorysideul">
-                    <li class="selected"><a href="/home/list">所有分类<i class="iconfont icon-angleright"></i></a></li>
+                    <?php
+                    $acls = "";
+                    if(!$this->cid) {
+                        $acls="selected";
+                    }
+                    ?>
+                    <li class="<?php echo $acls ?>" id="all"><a href="/home/list">所有分类<i class="iconfont icon-angleright"></i></a></li>
                     <?php foreach ($this->categorys as $c) :?>
-                        <li><a href="/home/list/<?php echo $c->id ?>"><?php echo $c->name ?><i class="iconfont icon-angleright"></i></a></li>
+                        <?php
+                        $cls = "";
+                        if($c->id == $this->cid) {
+                            $cls="selected";
+                        }
+                        ?>
+                        <li class="<?php echo $cls ?>" id="<?php echo $c->id ?>"><a href="/home/list/<?php echo $c->id ?>"><?php echo $c->name ?><i class="iconfont icon-angleright"></i></a></li>
                     <?php endforeach; ?>
                 </ul>
             </div>
