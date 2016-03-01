@@ -151,7 +151,7 @@
                             }
                             ?>
 
-                            <div source="<?php echo $this->photoImage($p->name . $p->type, 'large') ?>" class="detailgalleryitm <?php echo $clse ?>"
+                            <div index="<?php echo $i+1 ?>" source="<?php echo $this->photoImage($p->name . $p->type, 'large') ?>" class="detailgalleryitm <?php echo $clse ?>"
                                  style="background-image: url(<?php echo $this->photoImage($p->name . $p->type, 'main') ?>);">
                                 <div class="clr"></div>
                             </div>
@@ -169,7 +169,7 @@
     <div class="container bist07">
         <div class="col-xs-2">&nbsp;</div>
         <div class="col-xs-10">
-            <span>Images 1 / <?php echo count($this->model->photo) ?></span>
+            <span>Images <span id="bttip_index">1</span> / <span id="bttip_tt"><?php echo count($this->model->photo) ?></span></span>
         </div>
     </div>
 </div>
@@ -220,6 +220,28 @@
             $('.detailgalleryitm').click(function(){
                 var imgurl = $(this).attr('source');
                 $('#bigshowfrm').css('background-image', 'url("' + imgurl +'")');
+                $('.detailgalleryitm').removeClass('selected');
+                $(this).addClass('selected');
+                var index = $(this).attr('index');
+                $('#bttip_index').text(index);
+            });
+
+            $('.detailgallerylr.lt').click(function(){
+                var i = $('.detailgalleryitm.selected').attr('index');
+                i--;
+                if(i===0) {
+                    i = 1;
+                }
+                $('.detailgalleryitm[index=' + i + ']').click();
+            });
+            $('.detailgallerylr.rt').click(function(){
+                var i = $('.detailgalleryitm.selected').attr('index');
+                i++;
+                var max = parseInt($('#bttip_tt').val());
+                if(i > max) {
+                    i = max;
+                }
+                $('.detailgalleryitm[index=' + i + ']').click();
             });
         })
     </script>
