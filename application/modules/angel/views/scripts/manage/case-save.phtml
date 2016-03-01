@@ -1,0 +1,254 @@
+<style>
+</style>
+<h1 class="page-title"><?php echo $this->title ?></h1>
+<div class="row">
+    <div class="col-md-8">
+        <form role="form" method="post">
+            <div class="form-group">
+                <label>案例大图：</label>
+                <div class='panel panel-info'>
+                    <div id="gy-photo" class='panel-body gy-photo'>
+                    </div>
+                </div>
+                <input type="hidden" name="photo" id="photo"/>
+            </div>
+            <div class="form-group">
+                <label>案例名称：</label>
+                <input type="text" class="form-control" id="name" name="name" data-toggle="popover" value="<?php echo $this->model->name ?>">
+            </div>
+            <div class="form-group">
+                <label>案例标签：</label>
+                <input type="text" class="form-control" id="label" name="label" data-toggle="popover" value="<?php echo $this->model->label ?>">
+            </div>
+            <div class="form-group">
+                <label>Team：</label>
+                <input type="text" class="form-control" id="team" name="team" data-toggle="popover" value="<?php echo $this->model->team ?>">
+            </div>
+            <div class="form-group">
+                <label>Art Director：</label>
+                <input type="text" class="form-control" id="art_director" name="art_director" data-toggle="popover" value="<?php echo $this->model->art_director ?>">
+            </div>
+            <div class="form-group">
+                <label>Creative Director：</label>
+                <input type="text" class="form-control" id="creative_director" name="creative_director" data-toggle="popover" value="<?php echo $this->model->creative_director ?>">
+            </div>
+            <div class="form-group">
+                <label>Time Of Design：</label>
+                <input type="text" class="form-control" id="time_of_design" name="time_of_design" data-toggle="popover" value="<?php echo $this->model->time_of_design ?>">
+            </div>
+            <div class="form-group">
+                <label>Type：</label>
+                <input type="text" class="form-control" id="type" name="type" data-toggle="popover" value="<?php echo $this->model->type ?>">
+            </div>
+            <div class="form-group">
+                <label>行業屬性：</label>
+                <input type="text" class="form-control" id="property" name="property" data-toggle="popover" value="<?php echo $this->model->property ?>">
+            </div>
+            <div class="form-group">
+                <label>分类：</label>
+            </div>
+            <div class="form-group">
+                <?php foreach ($this->categorys as $c): ?>
+                    <?php $is = false; ?>
+                    <?php foreach ($this->model->category as $u): ?>
+                        <?php if ($c->id == $u->id) :?>
+                            <?php $is = true; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+
+                    <?php if ($is) :?>
+                        <input id="lab_<?php echo $c->id ?>" type="checkbox" class="category" value="<?php echo $c->id ?>" checked="checked"><label for="lab_<?php echo $c->id ?>" value="<?php echo $c->id ?>"><?php echo $c->name ?></label>
+                    <?php else: ?>
+                        <input id="lab_<?php echo $c->id ?>" type="checkbox" class="category" value="<?php echo $c->id ?>"  ><label for="lab_<?php echo $c->id ?>" value="<?php echo $c->id ?>"><?php echo $c->name ?></label>
+                    <?php endif ;?>
+                <?php endforeach;?>
+            </div>
+            <div class="form-group">
+                <label>案例内容：</label>
+                <input type="hidden" id="description" name="description">
+                <script type="text/plain" id="editor_content" name="editor_content" style="width:1000px;height:240px;">
+                    <p>请输入案例内容</p>
+                </script>
+            </div>
+            <div class="clear-20"></div>
+            <input type="text" style="display: none" id="category_id" name="category_id" value="<?php echo $this->category_id ?>">
+            <button type="button" id="save-btn" class="btn btn-default">确认提交</button>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    (function($) {
+        $('.gy-photo').photoSelector(false, <?php echo json_encode($this->photo) ?>);
+
+        $('#save-btn').click(function() {
+            var save = $('#gy-photo').attr('save');
+            if (!save || save === '{}') {
+                $('#photo').val('');
+            } else {
+                $('#photo').val(save);
+            }
+        });
+
+        $('#save-btn').click(function() {
+            var save = $('#gy-photo').attr('save');
+            if (!save || save === '{}') {
+                $('#photo').val('');
+            } else {
+                $('#photo').val(save);
+            }
+        });
+
+        $('input[name="programs[]"]').change(function(){
+            $(this).closest('.label').toggleClass('label-success');
+        });
+
+
+    })(jQuery);
+
+    $(document).ready(function() {
+        $('.category').click(function() {
+            var category_id = $('#category_id').val();
+            var id =  $(this).attr('value');
+            var op = $('#lab_'+ id).prop('checked');
+
+            if (op) {
+                if (category_id.length > 0) {
+                    category_id = category_id + ',' + id;
+                }
+                else {
+                    category_id = id;
+                }
+            }
+            else {
+                if (category_id == id) {
+                    category_id = '';
+                }
+                else {
+                    category_id = category_id.replace(','+ id, '');
+                    category_id = category_id.replace(id + ',', '');
+                }
+            }
+
+            $('#category_id').val(category_id);
+        })
+    })
+
+    function left(id) {
+        var own_programs = $('#gy-program').children();
+
+        if ($(own_programs[0]).attr('id') == id) {
+            return;
+        }
+
+        var cur_program = $('#'+ id);
+        var lf_program = $(cur_program).prev('div');
+
+        $(lf_program).remove();
+
+        $(cur_program).after(lf_program);
+
+        sortValue();
+    }
+
+    function right(id) {
+        var own_programs = $('#gy-program').children();
+
+        if ($(own_programs[own_programs.length - 1]).attr('id') == id) {
+            return;
+        }
+
+        var cur_program = $('#'+ id);
+        var rt_program = $(cur_program).next('div');
+
+        $(rt_program).remove();
+
+        $(cur_program).before(rt_program);
+
+        sortValue();
+    }
+
+    function del(id) {
+        var del_program = $('#'+ id);
+
+        $(del_program).remove();
+
+        var buttons = $(del_program).children('button');
+
+        for (var i = 0; i < buttons.length; i++) {
+            if ($(buttons[i]).html() != "O") {
+                $(buttons[i]).hide();
+            }
+            else {
+                $(buttons[i]).show();
+            }
+        }
+
+        $(del_program).on("click", addProgram($(del_program).attr('id')));
+
+        $('#not-program').append(del_program);
+
+        sortValue();
+    }
+
+    function sortValue() {
+        $('#programs').val("");
+
+        var own_programs = $('#gy-program').children();
+
+        for (var i = 0; i < own_programs.length;i++) {
+            if ($('#programs').val() != "") {
+                var val = $('#programs').val();
+
+                $('#programs').val(val + ',');
+            }
+
+            var val = $('#programs').val();
+
+            $('#programs').val(val + $(own_programs[i]).attr('id'));
+        }
+    }
+
+    function addProgram(id) {
+        var add_programs = $('#'+ id);
+
+        var par_ele = $(add_programs).parent();
+
+        if ($(par_ele).attr('id') == 'gy-program') {
+            return;
+        }
+
+        var buttons = $(add_programs).children('button');
+
+        for (var i = 0; i < buttons.length; i++) {
+            if ($(buttons[i]).html() == "O") {
+                $(buttons[i]).hide();
+            }
+            else {
+                $(buttons[i]).show();
+            }
+        }
+
+        $('#gy-program').append(add_programs);
+
+        sortValue();
+    }
+
+    $("#save-btn").click(function() {
+        var html_description = UM.getEditor('editor_content').getContent()
+        $("#description").val(html_description);
+
+        $("form").submit();
+    });
+
+    //实例化编辑器
+    var um = UM.getEditor('editor_content');
+
+    um.addListener('blur',function(){
+        $('#focush2').html('编辑器失去焦点了')
+    });
+    um.addListener('focus',function(){
+        $('#focush2').html('')
+    });
+
+    um.setContent('<?php echo $this->model->description ?>');
+</script>

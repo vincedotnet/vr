@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VR设计</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="<?php echo $this->cssPath("bootstrap.css"); ?>">
+    <link rel="stylesheet" href="<?php echo $this->cssPath("py_global.css"); ?>">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="<?php echo $this->jsPath('jquery-bootstrap.js'); ?>"></script>
+    <script src="<?php echo $this->jsPath('py_global.js'); ?>"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+<div class="xtopbne">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <img src="img/logo.png" class="bglogo" />
+            </div>
+            <div class="col-xs-6">
+                <ul class="big_menu">
+                    <li class="selected" onclick="location.href='index.html'">
+                        <a href="index.html">HOME</a>
+                    </li>
+                    <li onclick="location.href='/home/list'">
+                        <a href="/home/list">CASE</a>
+                    </li>
+                    <li onclick="location.href='/home/about'">
+                        <a href="/home/about">ABOUT</a>
+                    </li>
+                    <li onclick="location.href='/home/contact'">
+                        <a href="/home/contact">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo $this->layout()->content; ?>
+<div class="btban-wp">
+    <div class="container">
+        <div class="col-xs-10">
+            <div class="btban-2">
+                <div class="tt">OPPORTUNITIES</div>
+                <span class="cti">Media</span>
+                <span class="cti">Join Us</span>
+                <span class="cti">Intership</span>
+                <span class="cti">Cooperation</span>
+            </div>
+            <div class="btban-2">
+                <div class="tt">SERVICES</div>
+                <span class="cti">Font Design</span>
+                <span class="cti">Brand Design</span>
+                <span class="cti">Layout Design</span>
+                <span class="cti">Visual Design</span>
+                <span class="cti">Graphic Design</span>
+                <span class="cti">Package Design</span>
+            </div>
+            <div class="btban-2">
+                <div class="tt">ABOUT</div>
+                <span class="cti">About Us</span>
+                <span class="cti">Pertners</span>
+                <span class="cti">Our Team</span>
+                <span class="cti">A Brief History</span>
+            </div>
+            <div class="btban-2">
+                <div class="tt">CONTACT</div>
+                <span class="cti">vr_design@163.com</span>
+                <span class="cti">147983574@qq.com</span>
+            </div>
+            <div class="btban-2">
+                <div class="tt">ADDRESS</div>
+                <span class="cti">ROOM 102.CTB Creative Factory. NO. 78 daxin Road.</span>
+                <span class="cti">Nanshan District. Shen-Zhen. Guangdong. China</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="col-xs-2">
+            <div class="tt rf" style="font-weight:bold;margin-bottom:20px;">FOLLOW US</div>
+            <div class="clear"></div>
+            <div>
+                <a href="#" class="snsbtn"></a>
+                <a href="#" class="snsbtn weixin"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $('.home_block.fullheight').height($(window).height());
+    });
+</script>
+</body>
+</html>
+

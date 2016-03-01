@@ -1,0 +1,108 @@
+<div style="background:#FFF;padding:50px 0;">
+    <div class="container bgwtitle">
+        <div class="col-xs-4">&nbsp;</div>
+        <div class="col-xs-4">
+            <div>
+                <div class="t1">分&nbsp;&nbsp;类&nbsp;&nbsp;展&nbsp;&nbsp;示</div>
+                <div class="t2">C A T E G O R Y</div>
+            </div>
+        </div>
+        <div class="col-xs-4"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2">
+                <ul class="categorysideul">
+                    <li class="selected"><a href="/home/list">所有分类<i class="iconfont icon-angleright"></i></a></li>
+                    <?php foreach ($this->categorys as $c) :?>
+                        <li><a href="/home/list/<?php echo $c->id ?>"><?php echo $c->name ?><i class="iconfont icon-angleright"></i></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <div class="col-xs-10">
+                <?php foreach ($this->paginator as $p) :?>
+                    <div class="col-xs-4 ceitem" id="cp01">
+                        <a href="/home/case/<?php echo $p->id ?>" class="ceitemct">
+                            <img src="<?php echo $this->photoImage($p->photo[0]->name . $p->photo[0]->type, 'main') ?>" class="img" />
+                        </a>
+                        <a href="/home/case/<?php echo $p->id ?>" class="txt"><?php echo $p->name ?></a>
+                        <div class="txt2">
+                            <?php foreach ($p->category as $c) :?>
+                                <a href="/home/list/<?php echo $c->id ?>"><?php echo $c->name ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+<!--                <div class="col-xs-4 ceitem" id="cp01">-->
+<!--                    <a href="detail.html" class="ceitemct">-->
+<!--                        <img src="img/photos/t01.jpg" class="img" />-->
+<!--                    </a>-->
+<!--                    <a href="detail.html" class="txt">VAB</a>-->
+<!--                    <div class="txt2"><a href="category.html">商品类</a>, <a href="category.html">文化类</a></div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 ceitem" id="cp02">-->
+<!--                    <a href="detail.html" class="ceitemct">-->
+<!--                        <img src="img/photos/t02.jpg" class="img" />-->
+<!--                    </a>-->
+<!--                    <a href="detail.html" class="txt">YIU</a>-->
+<!--                    <div class="txt2"><a href="category.html">企划类</a></div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 ceitem" id="cp03">-->
+<!--                    <a href="detail.html" class="ceitemct">-->
+<!--                        <img src="img/photos/t03.jpg" class="img" />-->
+<!--                    </a>-->
+<!--                    <a href="detail.html" class="txt">EYEMARKER</a>-->
+<!--                    <div class="txt2"><a href="category.html">竞技类</a></div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 ceitem" id="cp04">-->
+<!--                    <a href="detail.html" class="ceitemct">-->
+<!--                        <img src="img/photos/t04.jpg" class="img" />-->
+<!--                    </a>-->
+<!--                    <a href="detail.html" class="txt">MYSUSI</a>-->
+<!--                    <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 ceitem" id="cp05">-->
+<!--                    <a href="detail.html" class="ceitemct">-->
+<!--                        <img src="img/photos/t05.jpg" class="img" />-->
+<!--                    </a>-->
+<!--                    <a href="detail.html" class="txt">TOLISTEN TESTING</a>-->
+<!--                    <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 ceitem" id="cp06">-->
+<!--                    <a href="detail.html" class="ceitemct">-->
+<!--                        <img src="img/photos/t06.jpg" class="img" />-->
+<!--                    </a>-->
+<!--                    <a href="detail.html" class="txt">CHUZHI</a>-->
+<!--                    <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 ceitem" id="cp07">-->
+<!--                    <a href="detail.html" class="ceitemct">-->
+<!--                        <img src="img/photos/t07.jpg" class="img" />-->
+<!--                    </a>-->
+<!--                    <a href="detail.html" class="txt">UYU</a>-->
+<!--                    <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 ceitem" id="cp08">-->
+<!--                    <a href="detail.html" class="ceitemct">-->
+<!--                        <img src="img/photos/t08.jpg" class="img" />-->
+<!--                    </a>-->
+<!--                    <a href="detail.html" class="txt">XIPHIAS CUT</a>-->
+<!--                    <div class="txt2"><a href="category.html">财经类</a>, <a href="category.html">产品类</a></div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 ceitem" id="cp09">-->
+<!--                    <a href="detail.html" class="ceitemct">-->
+<!--                        <img src="img/photos/t09.jpg" class="img" />-->
+<!--                    </a>-->
+<!--                    <a href="detail.html" class="txt">BOOMSTYLE</a>-->
+<!--                    <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">文体类</a></div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tab_2').addClass('selected');
+    })
+</script>

@@ -1,0 +1,242 @@
+<div class="detailcortn">
+    <div class="container">
+        <div class="col-xs-2">
+            &nbsp;
+        </div>
+        <div class="col-xs-8">
+            <div class="detailmte"><?php echo $this->model->name ?></div>
+            <div class="detailmte2"><?php echo $this->model->label ?></div>
+            <div class="tscrow">Team: <?php echo $this->model->team ?></div>
+            <div class="tscrow">Art Director: <?php echo $this->model->art_director ?></div>
+            <div class="tscrow">Creative Director: <?php echo $this->model->creative_director ?></div>
+            <div class="tscrow">Time Of Design : <?php echo $this->model->time_of_design ?></div>
+            <div class="tscrow">Type : <?php echo $this->model->type ?></div>
+            <div class="tscrow">行業屬性：<?php echo $this->model->property ?></div>
+            <div class="detailmte3"></div>
+            <div class="detailmte4"><?php echo $this->model->description ?></div>
+        </div>
+        <div class="col-xs-2">
+            &nbsp;
+        </div>
+    </div>
+</div>
+<style>
+    .detailgalleryitm {
+        background:url(/img/photos/case/vapeangle/small01.jpg);
+        background-size:cover;
+        width:100px;
+        height:60px;
+        float:left;
+        display:inline-block;
+        margin-right:10px;
+        cursor: pointer;
+    }
+    .detailgalleryitm .clr {
+        width:100%;
+        height:100%;
+        position: absolute;
+        left:0;
+        top:0;
+        background:rgba(255,255,255,.7);
+        display:block;
+    }
+    .detailgalleryitm.selected .clr, .detailgalleryitm:hover .clr {
+        display:none;
+    }
+    .detailgallerylr {
+        display:inline-block;
+        height:60px;
+        width:60px;
+        position:absolute;
+        left:-60px;
+        top:50%;
+        margin-top:-30px;
+        color:#aaa;
+        text-align: center;
+        line-height: 56px;
+        font-size:32px;
+        cursor: pointer;
+    }
+    .detailgallerylr:hover {
+        background-color:rgba(0,0,0,.03);
+        color:#0011E7;
+    }
+    .detailgallerylr.rt {
+        left:auto;
+        right:-60px;
+    }
+    .bist01 {
+        background:#FFF;
+    }
+    .bist02 {
+        padding-top:50px;
+        padding-bottom:20px;
+    }
+    .bist03 {
+        width:100%;height:400px;background:#333;position: relative;
+    }
+    .bist04 {
+        width:100%;height:100%;position:absolute;left:0;top:0;background:url(/img/photos/case/vapeangle/big01.jpg) center center no-repeat;background-size:cover;
+    }
+    .bist05 {
+        margin-top:30px;overflow: hidden;height:60px;
+    }
+    .bist06 {
+        width:980px;position:absolute;left:0;top:0;height:60px;
+    }
+    .bist07 {
+        padding-bottom:50px;color:#ccc;
+    }
+    .bist08 {
+        padding-bottom:80px;
+    }
+</style>
+<div class="bist01">
+    <div class="container bist02">
+
+        <div class="col-xs-2">&nbsp;</div>
+        <div class="col-xs-8">
+            <div class="bist03">
+                <div class="bist04"></div>
+            </div>
+            <div>
+                <span class="detailgallerylr lt iconfont icon-angleleft"></span>
+                <span class="detailgallerylr rt iconfont icon-angleright"></span>
+                <div class="bist05">
+                    <div class="bist06">
+<!--                        <div class="detailgalleryitm selected"><div class="clr"></div></div>-->
+                        <?php $i = 0?>
+                        <?php foreach ($this->model->photo as $p) :?>
+                            <?php if ($i == 0) :?>
+                                <div class="detailgalleryitm selected" style="background-image: url(<?php echo $this->photoImage($p->name . $p->type, 'main') ?>);"><div class="clr"></div></div>
+                            <?php else :?>
+                                <div class="detailgalleryitm" style="background-image: url(<?php echo $this->photoImage($p->name . $p->type, 'main') ?>);"><div class="clr"></div></div>
+                            <?php endif; ?>
+                            <?php $i++; ?>
+                        <?php endforeach;?>
+
+<!--                        <div class="detailgalleryitm" style="background-image: url(/img/photos/case/vapeangle/small02.jpg);"><div class="clr"></div></div>-->
+<!--                        <div class="detailgalleryitm" style="background-image: url(/img/photos/case/vapeangle/small03.jpg);"><div class="clr"></div></div>-->
+<!--                        <div class="detailgalleryitm" style="background-image: url(/img/photos/case/vapeangle/small04.jpg);"><div class="clr"></div></div>-->
+<!--                        <div class="detailgalleryitm" style="background-image: url(/img/photos/case/vapeangle/small05.jpg);"><div class="clr"></div></div>-->
+<!--                        <div class="detailgalleryitm" style="background-image: url(/img/photos/case/vapeangle/small06.jpg);"><div class="clr"></div></div>-->
+<!--                        <div class="detailgalleryitm" style="background-image: url(/img/photos/case/vapeangle/small07.jpg);"><div class="clr"></div></div>-->
+<!--                        <div class="detailgalleryitm" style="background-image: url(/img/photos/case/vapeangle/small08.jpg);"><div class="clr"></div></div>-->
+<!--                        <div class="detailgalleryitm" style="background-image: url(/img/photos/case/vapeangle/small09.jpg);"><div class="clr"></div></div>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-2">&nbsp;</div>
+
+    </div>
+    <div class="container bist07">
+        <div class="col-xs-2">&nbsp;</div>
+        <div class="col-xs-10">
+            <span>Images 1 / <?php echo count($this->model->photo) ?></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="home_block bist08">
+    <div class="container">
+        <?php $c = 0; ?>
+        <?php foreach ($this->products as $p) :?>
+            <?php if ($c == 0) :?>
+                <div class="row">
+            <?php endif; ?>
+            <?php if ($p->id == $this->model->id) :?>
+                    <div class="col-xs-3 ceitem selected" id="cp01">
+            <?php else :?>
+                <div class="col-xs-3 ceitem" id="cp01">
+            <?php endif; ?>
+                <a href="/home/case/<?php echo $p->id ?>" class="ceitemct">
+                    <img src="<?php echo $this->photoImage($p->photo[0]->name . $p->photo[0]->type, 'main') ?>" class="img" />
+                </a>
+                <a href="/home/case/<?php echo $p->id ?>" class="txt"><?php echo $p->name ?></a>
+                <div class="txt2">
+                    <?php foreach ($p->category as $c) :?>
+                        <a href="/home/list/<?php echo $c->id ?>"><?php echo $c->name ?></a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php if ($c == 0) :?>
+                </div>
+            <?php endif; ?>
+            <?php $c++; ?>
+            <?php
+                if ($c == 4) {
+                    $c = 0;
+                }
+            ?>
+        <?php endforeach; ?>
+<!--        <div class="row">-->
+<!--            <div class="col-xs-3 ceitem selected" id="cp01">-->
+<!--                <a href="detail.html" class="ceitemct">-->
+<!--                    <img src="img/photos/t01.jpg" class="img" />-->
+<!--                </a>-->
+<!--                <a href="detail.html" class="txt">VAB</a>-->
+<!--                <div class="txt2"><a href="category.html">商品类</a>, <a href="category.html">文化类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-3 ceitem" id="cp02">-->
+<!--                <a href="detail.html" class="ceitemct">-->
+<!--                    <img src="img/photos/t02.jpg" class="img" />-->
+<!--                </a>-->
+<!--                <a href="detail.html" class="txt">YIU</a>-->
+<!--                <div class="txt2"><a href="category.html">企划类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-3 ceitem" id="cp03">-->
+<!--                <a href="detail.html" class="ceitemct">-->
+<!--                    <img src="img/photos/t03.jpg" class="img" />-->
+<!--                </a>-->
+<!--                <a href="detail.html" class="txt">EYEMARKER</a>-->
+<!--                <div class="txt2"><a href="category.html">竞技类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-3 ceitem" id="cp04">-->
+<!--                <a href="detail.html" class="ceitemct">-->
+<!--                    <img src="img/photos/t02.jpg" class="img" />-->
+<!--                </a>-->
+<!--                <a href="detail.html" class="txt">YIU</a>-->
+<!--                <div class="txt2"><a href="category.html">企划类</a></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-xs-3 ceitem" id="cp05">-->
+<!--                <a href="detail.html" class="ceitemct">-->
+<!--                    <img src="img/photos/t07.jpg" class="img" />-->
+<!--                </a>-->
+<!--                <a href="detail.html" class="txt">UYU</a>-->
+<!--                <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-3 ceitem" id="cp06">-->
+<!--                <a href="detail.html" class="ceitemct">-->
+<!--                    <img src="img/photos/t08.jpg" class="img" />-->
+<!--                </a>-->
+<!--                <a href="detail.html" class="txt">XIPHIAS CUT</a>-->
+<!--                <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-3 ceitem" id="cp07">-->
+<!--                <a href="detail.html" class="ceitemct">-->
+<!--                    <img src="img/photos/t09.jpg" class="img" />-->
+<!--                </a>-->
+<!--                <a href="detail.html" class="txt">BOOMSTYLE</a>-->
+<!--                <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-3 ceitem" id="cp08">-->
+<!--                <a href="detail.html" class="ceitemct">-->
+<!--                    <img src="img/photos/t09.jpg" class="img" />-->
+<!--                </a>-->
+<!--                <a href="detail.html" class="txt">BOOMSTYLE</a>-->
+<!--                <div class="txt2"><a href="category.html">竞技类</a>, <a href="category.html">产品类</a></div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tab_2').addClass('selected');
+    })
+</script>

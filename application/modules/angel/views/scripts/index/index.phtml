@@ -1,0 +1,113 @@
+<div class="home_block fullheight" style="background-image:url(img/bg01.jpg);">
+    <div class="bigvr1"></div>
+</div>
+
+<div class="home_block" style="padding:80px 0;">
+    <div class="container bgwtitle">
+        <div class="col-xs-4">&nbsp;</div>
+        <div class="col-xs-4">
+            <div>
+                <div class="t1">设&nbsp;&nbsp;计&nbsp;&nbsp;案&nbsp;&nbsp;例</div>
+                <div class="t2">C A S E&nbsp;&nbsp;&nbsp;&nbsp;S H O W</div>
+            </div>
+        </div>
+        <div class="col-xs-4"></div>
+    </div>
+    <div class="container">
+        <?php $c = 0; ?>
+        <?php foreach ($this->product as $p) :?>
+            <?php if ($c == 0) :?>
+                <div class="row">
+            <?php endif; ?>
+                <div class="col-xs-4 ceitem" id="cp01" onclick="location.href='/home/case/<?php echo $p->id ?>'">
+                    <div class="ceitemct">
+                        <img src="<?php echo $this->photoImage($p->photo[0]->name . $p->photo[0]->type, 'main') ?>" class="img" />
+                    </div>
+                    <div class="txt"><?php echo $p->name ?></div>
+                    <div class="txt2">
+                        <?php foreach ($p->category as $c) :?>
+                            <a href="#"><?php echo $c->name ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php if ($c == 0) :?>
+                </div>
+            <?php endif; ?>
+            <?php $c ++; ?>
+            <?php
+                if ($c == 3) {
+                    $c = 0;
+                }
+            ?>
+        <?php endforeach; ?>
+<!--        <div class="row">-->
+<!--            <div class="col-xs-4 ceitem" id="cp01" onclick="location.href='detail.html'">-->
+<!--                <div class="ceitemct">-->
+<!--                    <img src="img/photos/t01.jpg" class="img" />-->
+<!--                </div>-->
+<!--                <div class="txt">VAB</div>-->
+<!--                <div class="txt2"><a href="#">商品类</a>, <a href="#">文化类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-4 ceitem" id="cp02" onclick="location.href='detail.html'">-->
+<!--                <div class="ceitemct">-->
+<!--                    <img src="img/photos/t02.jpg" class="img" />-->
+<!--                </div>-->
+<!--                <div class="txt">YIU</div>-->
+<!--                <div class="txt2"><a href="#">企划类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-4 ceitem" id="cp03" onclick="location.href='detail.html'">-->
+<!--                <div class="ceitemct">-->
+<!--                    <img src="img/photos/t03.jpg" class="img" />-->
+<!--                </div>-->
+<!--                <div class="txt">EYEMARKER</div>-->
+<!--                <div class="txt2"><a href="#">竞技类</a></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-xs-4 ceitem" id="cp04" onclick="location.href='detail.html'">-->
+<!--                <div class="ceitemct">-->
+<!--                    <img src="img/photos/t04.jpg" class="img" />-->
+<!--                </div>-->
+<!--                <div class="txt">MYSUSI</div>-->
+<!--                <div class="txt2"><a href="#">竞技类</a>, <a href="#">产品类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-4 ceitem" id="cp05" onclick="location.href='detail.html'">-->
+<!--                <div class="ceitemct">-->
+<!--                    <img src="img/photos/t05.jpg" class="img" />-->
+<!--                </div>-->
+<!--                <div class="txt">TOLISTEN</div>-->
+<!--                <div class="txt2"><a href="#">竞技类</a>, <a href="#">产品类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-4 ceitem" id="cp06" onclick="location.href='detail.html'">-->
+<!--                <div class="ceitemct">-->
+<!--                    <img src="img/photos/t06.jpg" class="img" />-->
+<!--                </div>-->
+<!--                <div class="txt">CHUZHI</div>-->
+<!--                <div class="txt2"><a href="#">竞技类</a>, <a href="#">产品类</a></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-xs-4 ceitem" id="cp07" onclick="location.href='detail.html'">-->
+<!--                <div class="ceitemct">-->
+<!--                    <img src="img/photos/t07.jpg" class="img" />-->
+<!--                </div>-->
+<!--                <div class="txt">UYU</div>-->
+<!--                <div class="txt2"><a href="#">竞技类</a>, <a href="#">产品类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-4 ceitem" id="cp08" onclick="location.href='detail.html'">-->
+<!--                <div class="ceitemct">-->
+<!--                    <img src="img/photos/t08.jpg" class="img" />-->
+<!--                </div>-->
+<!--                <div class="txt">XIPHIAS CUT</div>-->
+<!--                <div class="txt2"><a href="#">竞技类</a>, <a href="#">产品类</a></div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-4 ceitem" id="cp09" onclick="location.href='detail.html'">-->
+<!--                <div class="ceitemct">-->
+<!--                    <img src="img/photos/t09.jpg" class="img" />-->
+<!--                </div>-->
+<!--                <div class="txt">BOOMSTYLE</div>-->
+<!--                <div class="txt2"><a href="#">竞技类</a>, <a href="#">产品类</a></div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</div>
