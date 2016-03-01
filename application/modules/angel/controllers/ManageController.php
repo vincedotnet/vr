@@ -497,20 +497,22 @@ class Angel_ManageController extends Angel_Controller_Action {
 
             $tmp_category_id = $this->getParam('category_id');
 
-            $category_id = explode(",", $tmp_category_id);
-
-            $category = array();
-
-            foreach ($category_id as $c_id) {
-                $category[] = $categoryModel->getById($c_id);
-            }
-
             if (!$name) {
                 $this->_redirect($this->view->url(array(), 'manage-result') . '?error=必须填写案例名称');
             }
+            else if (!$tmp_category_id) {
+                $this->_redirect($this->view->url(array(), 'manage-result') . '?error=必须选择分类');
+            }
             else {
-                try {
+                $category_id = explode(",", $tmp_category_id);
 
+                $category = array();
+
+                foreach ($category_id as $c_id) {
+                    $category[] = $categoryModel->getById($c_id);
+                }
+
+                try {
                     $result = $productModel->addProduct($name, $label, $team, $art_director, $creative_director, $time_of_design, $type, $property, $description, $photo, $category);
                 } catch (Exception $e) {
                     $error = $e->getMessage();
@@ -579,20 +581,23 @@ class Angel_ManageController extends Angel_Controller_Action {
 
             $tmp_category_id = $this->getParam('category_id');
 
-            $category_id = explode(",", $tmp_category_id);
-
-            $category = array();
-
-            foreach ($category_id as $c_id) {
-                $ca = $categoryModel->getById($c_id);
-
-                $category[] = $ca;
-            }
-
             if (!$name) {
                 $this->_redirect($this->view->url(array(), 'manage-result') . '?error=必须填写案例名称');
             }
+            else if (!$tmp_category_id) {
+                $this->_redirect($this->view->url(array(), 'manage-result') . '?error=必须选择分类');
+            }
             else {
+                $category_id = explode(",", $tmp_category_id);
+
+                $category = array();
+
+                foreach ($category_id as $c_id) {
+                    $ca = $categoryModel->getById($c_id);
+
+                    $category[] = $ca;
+                }
+
                 try {
                     $result = $productModel->saveProduct($id,$name, $label, $team, $art_director, $creative_director, $time_of_design, $type, $property, $description, $photo, $category);
                 } catch (Angel_Exception_News $e) {
@@ -663,6 +668,7 @@ class Angel_ManageController extends Angel_Controller_Action {
         }
     }
 
+    
     public function caseRemoveAction() {
         if ($this->request->isPost()) {
             $result = 0;
