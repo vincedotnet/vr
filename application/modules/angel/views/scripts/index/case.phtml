@@ -11,7 +11,18 @@
             <div class="tscrow">Creative Director: <?php echo $this->model->creative_director ?></div>
             <div class="tscrow">Time Of Design : <?php echo $this->model->time_of_design ?></div>
             <div class="tscrow">Type : <?php echo $this->model->type ?></div>
-            <div class="tscrow">行業屬性：<?php echo $this->model->property ?></div>
+<!--            <div class="tscrow">行業屬性：--><?php //echo $this->model->property ?><!--</div>-->
+            <div class="tscrow">行業屬性：
+                <?php $index = 0;?>
+                <?php foreach ($this->model->category as $c) : ?>
+                    <?php
+                    if ($index > 0) {
+                        echo '/';
+                    }
+                    ?>
+                    <a class="catieim" href="<?php echo "/home/list/" . $c->id ?>"><?php echo $c->name; $index ++ ?></a>
+                <?php endforeach; ?>
+            </div>
             <div class="detailmte3"></div>
             <div class="detailmte4"><?php echo $this->model->description ?></div>
         </div>

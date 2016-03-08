@@ -692,3 +692,12 @@ a:hover {
 .categorysideul li:hover .icon-angleright {
     display: inline-block;
 }
+
+.catieim {
+    color:#0011e7 !important;
+
+}
+.catieim:hover {
+    font-size:18px;
+    line-height:14px;
+}
