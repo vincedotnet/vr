@@ -403,15 +403,15 @@ a:hover {
 }
 
 .snsbtn {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     display: inline-block;
     border: 2px solid #0110e3;
     background: url(../img/weibo.png) center center no-repeat;
     background-size: contain;
     border-radius: 200px;
     float: right;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 .snsbtn.weixin {
@@ -420,8 +420,9 @@ a:hover {
 
 .detailcortn {
     width: 100%;
-    background: #0111e3;
-    color: #FFF;
+    background: url(../img/bg01.jpg) center center no-repeat;
+    background-attachment: fixed;
+    color: #0011e3;
     padding: 50px 0;
     line-height: 36px;
 }
@@ -437,7 +438,7 @@ a:hover {
 }
 
 .detailmte3 {
-    background: #FFF;
+    background: #0011e3;
     margin: 30px 0;
     height: 1px;
 }

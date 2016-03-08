@@ -1,15 +1,21 @@
-<div class="home_block" style="background-image:url(/img/bg02.jpg);padding-top:180px;padding-bottom:180px;">
-    <div style="text-align: center;color:#FFF;line-height:32px;width:550px;margin:0 auto;">
-        <div style="font-weight:bold;font-size:24px;margin-bottom:40px;">CONTACT US</div>
-        <span style="font-size:20px;" class="iconfont icon-mail"></span>
-        <div><?php echo $this->model->email1 ?></div>
-        <div style="margin-bottom:40px;"><?php echo $this->model->email2 ?></div>
-        <span style="font-size:20px;" class="iconfont icon-home"></span>
-        <div><?php echo $this->model->company_address ?></div>
+<div class="home_block" style="background-image:url(/img/bg01.jpg);background-position:center center;background-attachment:fixed;padding-top:240px;padding-bottom:80px;">
+    <div style="text-align: center;color:#0011e3;line-height:32px;width:550px;margin:0 auto;">
+        <div style="font-weight:bold;font-size:24px;margin-bottom:40px;color:#0011e3">CONTACT US</div>
+        <span style="font-size:20px;color:#0011e3;" class="iconfont icon-mail"></span>
+        <div style="color:#0011e3"><?php echo $this->model->email1 ?></div>
+        <div style="margin-bottom:40px;color:#0011e3;"><?php echo $this->model->email2 ?></div>
+        <span style="font-size:20px;color:#0011e3;" class="iconfont icon-home"></span>
+        <div style="color:#0011e3"><?php echo $this->model->company_address ?></div>
     </div>
+    <style>
+        .xtopbne {
+            background:transparent;
+        }
+    </style>
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#tab_4').addClass('selected');
+        $('.xtopbne').removeClass('relative');
     })
 </script>
