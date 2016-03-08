@@ -18,11 +18,9 @@
         <div class="col-xs-4"></div>
     </div>
     <div class="container">
+        <div class="row">
         <?php $c = 0; ?>
         <?php foreach ($this->product as $p) :?>
-            <?php if ($c == 0) :?>
-                <div class="row">
-            <?php endif; ?>
 
             <div class="col-xs-4 ceitem" id="<?php echo $p->id ?>">
                 <a href="/home/case/<?php echo $p->id ?>" class="ceitemct">
@@ -36,9 +34,6 @@
                 </div>
             </div>
 
-            <?php if ($c == 0) :?>
-                </div>
-            <?php endif; ?>
             <?php $c ++; ?>
             <?php
                 if ($c == 3) {
@@ -46,6 +41,7 @@
                 }
             ?>
         <?php endforeach; ?>
+        </div>
     </div>
 
 
