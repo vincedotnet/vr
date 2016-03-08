@@ -46,3 +46,4 @@ $.fn.stickyBox = function(maxOffset, stickyClass) {
 
     });
 }
+
