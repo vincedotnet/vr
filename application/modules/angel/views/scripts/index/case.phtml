@@ -36,11 +36,11 @@
     .detailgalleryitm {
         background: url(/img/photos/case/vapeangle/small01.jpg);
         background-size: cover;
-        width: 100px;
-        height: 60px;
+        width: 118px;
+        height: 70px;
         float: left;
         display: inline-block;
-        margin-right: 10px;
+        margin-right: 5px;
         cursor: pointer;
     }
 
@@ -64,15 +64,15 @@
 
     .detailgallerylr {
         display: inline-block;
-        height: 60px;
+        height: 70px;
         width: 60px;
         position: absolute;
         left: -60px;
         top: 50%;
-        margin-top: -30px;
+        margin-top: -35px;
         color: #aaa;
         text-align: center;
-        line-height: 56px;
+        line-height: 66px;
         font-size: 32px;
         cursor: pointer;
     }
@@ -116,7 +116,7 @@
     .bist05 {
         margin-top: 30px;
         overflow: hidden;
-        height: 60px;
+        height: 70px;
     }
 
     .bist06 {
@@ -124,7 +124,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        height: 60px;
+        height: 100%;
     }
 
     .bist07 {
@@ -200,9 +200,9 @@
             <?php $c = 0; ?>
             <?php foreach ($this->products as $p) : ?>
             <?php if ($p->id == $this->model->id) : ?>
-            <div class="col-xs-3 ceitem selected" id="<?php echo $p->id ?>">
+            <div class="col-xs-4 ceitem selected" id="<?php echo $p->id ?>">
                 <?php else : ?>
-                <div class="col-xs-3 ceitem" id="<?php echo $p->id ?>">
+                <div class="col-xs-4 ceitem" id="<?php echo $p->id ?>">
                     <?php endif; ?>
                     <a href="/home/case/<?php echo $p->id ?>" class="ceitemct">
                         <img src="<?php echo $this->photoImage($p->photo[0]->name . $p->photo[0]->type, 'main') ?>"
@@ -265,10 +265,10 @@
             var selected = $('.detailgalleryitm.selected');
             var index = selected.attr('index');
             var pg = parseInt(index / 6);
-            var offset = pg * -1 * 550;
+            var offset = pg * -1 * 615;
             $('.di4irt').animate({
                 left: offset + "px"
-            }, 200);
+            }, 400);
         }
 
 
