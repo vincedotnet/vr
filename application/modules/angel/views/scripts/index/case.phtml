@@ -264,7 +264,7 @@
         function slideBtSie() {
             var selected = $('.detailgalleryitm.selected');
             var index = selected.attr('index');
-            var pg = Math.ceil(index / 6);
+            var pg = Math.ceil(index / 6) - 1;
             var offset = pg * -1 * 6 * (118 + 7);
             $('.di4irt').animate({
                 left: offset + "px"
