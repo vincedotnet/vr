@@ -706,3 +706,19 @@ a:hover {
     font-size:18px;
     line-height:14px;
 }
+
+.showqrly {
+    display:none;
+    position:fixed;
+    width:320px;
+    height:320px;
+    background:url(../img/qr.jpg) center center no-repeat;
+    background-size:cover;
+    background-color:#FFF;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,.6);
+    left:50%;
+    top:50%;
+    margin-left:-160px;
+    margin-top:-160px;
+}
