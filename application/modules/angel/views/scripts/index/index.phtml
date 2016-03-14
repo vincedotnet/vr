@@ -23,10 +23,10 @@
         <?php foreach ($this->product as $p) :?>
 
             <div class="col-xs-4 ceitem" id="<?php echo $p->id ?>">
-                <a href="/home/case/<?php echo $p->id ?>" class="ceitemct">
+                <a target="_blank" href="/home/case/<?php echo $p->id ?>" class="ceitemct">
                     <img src="<?php echo $this->photoImage($p->photo[0]->name . $p->photo[0]->type, 'main') ?>" class="img" />
                 </a>
-                <a href="/home/case/<?php echo $p->id ?>" class="txt"><?php echo $p->name ?></a>
+                <a target="_blank" href="/home/case/<?php echo $p->id ?>" class="txt"><?php echo $p->name ?></a>
                 <div class="txt2">
                     <?php foreach ($p->category as $c) :?>
                         <a href="/home/list/<?php echo $c->id ?>"><?php echo $c->name ?></a>
