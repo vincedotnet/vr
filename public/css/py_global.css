@@ -316,7 +316,9 @@ a:hover {
     cursor: pointer;
     width: 100%;
 }
-
+.ceitem .txt2 {
+    opacity:.75;
+}
 .ceitem.blur {
     filter: url(blur.svg#blur);
     /* FireFox, Chrome, Opera */
