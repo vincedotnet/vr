@@ -1,5 +1,9 @@
 $(document).ready(function() {
     setBlur($('.ceitem'));
+
+    $('.snsbtn.weixin').click(function(){
+        
+    });
 });
 
 function setBlur(target) {
