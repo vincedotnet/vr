@@ -413,7 +413,7 @@ a:hover {
     background-size: contain;
     border-radius: 200px;
     float: right;
-    margin-right:26px;
+    margin-right:0;
     box-shadow: 0 1px 10px rgba(0,0,0,.2);
     /*margin-left: 10px;*/
 }
@@ -424,7 +424,9 @@ a:hover {
 .snsbtn.weixin {
     background-image: url(../img/weixin.png);
 }
-
+.snsbtn.weixin {
+    margin-right:5px;
+}
 .detailcortn {
     width: 100%;
     background: url(../img/bg01.jpg) center center no-repeat;
