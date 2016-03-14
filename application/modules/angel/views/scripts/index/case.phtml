@@ -148,7 +148,7 @@
                 $firstbigimg = "";
                 if (count($this->model->photo)) {
                     $ap = $this->model->photo[0];
-                    $firstbigimg = $this->photoImage($ap->name . $ap->type, 'main');
+                    $firstbigimg = $this->photoImage($ap->name . $ap->type, 'orig');
                     $firstbigimg = "style='background-image:url(" . $firstbigimg . ");'";
                 }
                 ?>
