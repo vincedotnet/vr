@@ -317,7 +317,7 @@ a:hover {
     width: 100%;
 }
 .ceitem .txt2 {
-    opacity:.6;
+    opacity:.4;
 }
 .ceitem.blur {
     filter: url(blur.svg#blur);
