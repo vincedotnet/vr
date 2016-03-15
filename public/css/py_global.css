@@ -316,7 +316,9 @@ a:hover {
     cursor: pointer;
     width: 100%;
 }
-
+.ceitem .txt2 {
+    opacity:.4;
+}
 .ceitem.blur {
     filter: url(blur.svg#blur);
     /* FireFox, Chrome, Opera */
@@ -413,7 +415,7 @@ a:hover {
     background-size: contain;
     border-radius: 200px;
     float: right;
-    margin-right:26px;
+    margin-right:0;
     box-shadow: 0 1px 10px rgba(0,0,0,.2);
     /*margin-left: 10px;*/
 }
@@ -424,7 +426,9 @@ a:hover {
 .snsbtn.weixin {
     background-image: url(../img/weixin.png);
 }
-
+.snsbtn.weixin {
+    margin-right:12px;
+}
 .detailcortn {
     width: 100%;
     background: url(../img/bg01.jpg) center center no-repeat;
@@ -703,4 +707,20 @@ a:hover {
 .catieim:hover {
     font-size:18px;
     line-height:14px;
+}
+
+.showqrly {
+    display:none;
+    position:fixed;
+    width:320px;
+    height:320px;
+    background:url(../img/qr.jpg) center center no-repeat;
+    background-size:cover;
+    background-color:#FFF;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,.6);
+    left:50%;
+    top:50%;
+    margin-left:-160px;
+    margin-top:-160px;
 }

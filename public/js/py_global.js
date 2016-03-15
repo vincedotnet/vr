@@ -1,5 +1,12 @@
 $(document).ready(function() {
     setBlur($('.ceitem'));
+
+    $('.snsbtn.weixin').mouseenter(function(){
+        $('.showqrly').fadeIn(200);
+    });
+    $('.snsbtn.weixin').mouseleave(function(){
+        $('.showqrly').fadeOut(200);
+    });
 });
 
 function setBlur(target) {

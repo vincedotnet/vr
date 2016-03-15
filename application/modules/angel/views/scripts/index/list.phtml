@@ -16,7 +16,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-xs-2">
+            <div class="col-xs-2" style="display:none;">
                 <ul class="categorysideul">
                     <?php
                     $acls = "";
@@ -36,13 +36,13 @@
                     <?php endforeach; ?>
                 </ul>
             </div>
-            <div class="col-xs-10">
+            <div class="col-xs-12">
                 <?php foreach ($this->paginator as $p) :?>
                     <div class="col-xs-4 ceitem" id="<?php echo $p->id ?>">
-                        <a href="/home/case/<?php echo $p->id ?>" class="ceitemct">
+                        <a target="_blank" href="/home/case/<?php echo $p->id ?>" class="ceitemct">
                             <img src="<?php echo $this->photoImage($p->photo[0]->name . $p->photo[0]->type, 'main') ?>" class="img" />
                         </a>
-                        <a href="/home/case/<?php echo $p->id ?>" class="txt"><?php echo $p->name ?></a>
+                        <a target="_blank" href="/home/case/<?php echo $p->id ?>" class="txt"><?php echo $p->name ?></a>
                         <div class="txt2">
                             <?php foreach ($p->category as $c) :?>
                                 <a href="/home/list/<?php echo $c->id ?>"><?php echo $c->name ?></a>
@@ -52,6 +52,20 @@
                 <?php endforeach; ?>
 
             </div>
+            <?php if($this->cid):?>
+            <div class="col-xs-12">
+                <style>
+                    .gasmore {
+                        background:#FBFBFB;border:1px solid #E8E8E8;display:block;color:#0110e3;box-shadow:0 1px 3px rgba(0,0,0,.1);text-align:center;height:50px;line-height:50px;width:100%;
+                    }
+                    .gasmore:hover {
+                        background:#FFF;
+                        color:#0110e3;
+                    }
+                </style>
+                <a href="/home/list" class="gasmore">VIEW MORE</a>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
