@@ -503,7 +503,7 @@ class Angel_ManageController extends Angel_Controller_Action {
             $tmp_category_id = $this->getParam('category_id');
 
             if ($gif_file_name) {
-                if ($_FILES["file_gif"]["type"] == "image/gif" && $_FILES["file_gif"]["size"] < 20000) {
+                if ($_FILES["file_gif"]["type"] == "image/gif" && $_FILES["file_gif"]["size"] < 20000000) {
                     $tmp_file_name = $this->create_guid();
 
                     $tmp_file_name = str_ireplace('-', '', $tmp_file_name);
@@ -657,7 +657,7 @@ class Angel_ManageController extends Angel_Controller_Action {
             }
             else {
                 if ($show_gif_file_name) {
-                    if ($_FILES["file_show_gif"]["type"] == "image/gif" && $_FILES["file_show_gif"]["size"] < 20000) {
+                    if ($_FILES["file_show_gif"]["type"] == "image/gif" && $_FILES["file_show_gif"]["size"] < 20000000) {
                         $tmp_show_file_name = $this->create_guid();
 
                         $tmp_show_file_name = str_ireplace('-', '', $tmp_show_file_name);
