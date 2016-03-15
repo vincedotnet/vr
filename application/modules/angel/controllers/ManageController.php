@@ -495,7 +495,50 @@ class Angel_ManageController extends Angel_Controller_Action {
             $description = $this->getParam('description');
             $photo = $this->decodePhoto();
 
+            $gif_file_name = $this->getParam('gif');
+            $show_gif_file_name = $this->getParam('show_gif');
+
+            $index = $this->getParam('index');
+
             $tmp_category_id = $this->getParam('category_id');
+
+            if ($gif_file_name) {
+                if ($_FILES["file_gif"]["type"] == "image/gif" && $_FILES["file_gif"]["size"] < 20000) {
+                    $tmp_file_name = $this->create_guid();
+
+                    $tmp_file_name = str_ireplace('-', '', $tmp_file_name);
+                    $tmp_file_name = str_ireplace('{', '', $tmp_file_name);
+                    $tmp_file_name = str_ireplace('}', '', $tmp_file_name) . ".gif";
+
+                    $savePath = $this->getPhotoPath($tmp_file_name);
+
+                    if (!move_uploaded_file($_FILES["file_gif"]["tmp_name"], $savePath)) {
+                        $this->_redirect($this->view->url(array(), 'manage-result') . '?error=上传gif失败');
+                    }
+                }
+                else {
+                    $this->_redirect($this->view->url(array(), 'manage-result') . '?error=GIF图片文件类型错误或尺寸过大');
+                }
+            }
+
+            if ($show_gif_file_name) {
+                if ($_FILES["file_show_gif"]["type"] == "image/gif" && $_FILES["file_show_gif"]["size"] < 20000) {
+                    $tmp_show_file_name = $this->create_guid();
+
+                    $tmp_show_file_name = str_ireplace('-', '', $tmp_show_file_name);
+                    $tmp_show_file_name = str_ireplace('{', '', $tmp_show_file_name);
+                    $tmp_show_file_name = str_ireplace('}', '', $tmp_show_file_name) . ".gif";
+
+                    $savePath = $this->getPhotoPath($tmp_show_file_name);
+
+                    if (!move_uploaded_file($_FILES["file_show_gif"]["tmp_name"], $savePath)) {
+                        $this->_redirect($this->view->url(array(), 'manage-result') . '?error=上传gif失败');
+                    }
+                }
+                else {
+                    $this->_redirect($this->view->url(array(), 'manage-result') . '?error=GIF图片文件类型错误或尺寸过大');
+                }
+            }
 
             if (!$name) {
                 $this->_redirect($this->view->url(array(), 'manage-result') . '?error=必须填写案例名称');
@@ -513,7 +556,7 @@ class Angel_ManageController extends Angel_Controller_Action {
                 }
 
                 try {
-                    $result = $productModel->addProduct($name, $label, $team, $art_director, $creative_director, $time_of_design, $type, $property, $description, $photo, $category);
+                    $result = $productModel->addProduct($name, $label, $team, $art_director, $creative_director, $time_of_design, $type, $property, $description, $photo, $category, $tmp_show_file_name, $tmp_file_name, $index);
                 } catch (Exception $e) {
                     $error = $e->getMessage();
                 }
@@ -579,7 +622,58 @@ class Angel_ManageController extends Angel_Controller_Action {
             $description = $this->getParam('description');
             $photo = $this->decodePhoto();
 
+            $gif_file_name = $this->getParam('gif');
+            $show_gif_file_name = $this->getParam('show_gif');
+
+            $index = $this->getParam('index');
+
             $tmp_category_id = $this->getParam('category_id');
+//            var_dump($_FILES["file_gif"]["tmp_name"]); exit;
+            if ($_FILES["file_gif"]["tmp_name"] == "") {
+                $tmp_file_name = $gif_file_name;
+            }
+            else {
+                if ($gif_file_name) {
+                    if ($_FILES["file_gif"]["type"] == "image/gif" && $_FILES["file_gif"]["size"] < 20000) {
+                        $tmp_file_name = $this->create_guid();
+
+                        $tmp_file_name = str_ireplace('-', '', $tmp_file_name);
+                        $tmp_file_name = str_ireplace('{', '', $tmp_file_name);
+                        $tmp_file_name = str_ireplace('}', '', $tmp_file_name) . ".gif";
+
+                        $savePath = $this->getPhotoPath($tmp_file_name);
+
+                        if (!move_uploaded_file($_FILES["file_gif"]["tmp_name"], $savePath)) {
+                            $this->_redirect($this->view->url(array(), 'manage-result') . '?error=上传gif失败');
+                        }
+                    } else {
+                        $this->_redirect($this->view->url(array(), 'manage-result') . '?error=GIF图片文件类型错误或尺寸过大');
+                    }
+                }
+            }
+
+            if ($_FILES["file_show_gif"]["tmp_name"] == "") {
+                $tmp_show_file_name = $show_gif_file_name;
+            }
+            else {
+                if ($show_gif_file_name) {
+                    if ($_FILES["file_show_gif"]["type"] == "image/gif" && $_FILES["file_show_gif"]["size"] < 20000) {
+                        $tmp_show_file_name = $this->create_guid();
+
+                        $tmp_show_file_name = str_ireplace('-', '', $tmp_show_file_name);
+                        $tmp_show_file_name = str_ireplace('{', '', $tmp_show_file_name);
+                        $tmp_show_file_name = str_ireplace('}', '', $tmp_show_file_name) . ".gif";
+
+                        $savePath = $this->getPhotoPath($tmp_show_file_name);
+
+                        if (!move_uploaded_file($_FILES["file_show_gif"]["tmp_name"], $savePath)) {
+                            $this->_redirect($this->view->url(array(), 'manage-result') . '?error=上传gif失败');
+                        }
+                    } else {
+                        $this->_redirect($this->view->url(array(), 'manage-result') . '?error=GIF图片文件类型错误或尺寸过大');
+                    }
+                }
+            }
 
             if (!$name) {
                 $this->_redirect($this->view->url(array(), 'manage-result') . '?error=必须填写案例名称');
@@ -599,7 +693,7 @@ class Angel_ManageController extends Angel_Controller_Action {
                 }
 
                 try {
-                    $result = $productModel->saveProduct($id,$name, $label, $team, $art_director, $creative_director, $time_of_design, $type, $property, $description, $photo, $category);
+                    $result = $productModel->saveProduct($id,$name, $label, $team, $art_director, $creative_director, $time_of_design, $type, $property, $description, $photo, $category, $tmp_show_file_name, $tmp_file_name, $index);
                 } catch (Angel_Exception_News $e) {
                     $error = $e->getDetail();
                 } catch (Exception $e) {
@@ -668,7 +762,6 @@ class Angel_ManageController extends Angel_Controller_Action {
         }
     }
 
-    
     public function caseRemoveAction() {
         if ($this->request->isPost()) {
             $result = 0;
@@ -822,5 +915,34 @@ class Angel_ManageController extends Angel_Controller_Action {
                 $this->_redirect($this->view->url(array(), 'manage-result') . '?error=' . $notFoundMsg);
             }
         }
+    }
+
+    public function create_guid($namespace = '') {
+        static $guid = '';
+        $uid = uniqid("", true);
+        $data = $namespace;
+        $data .= $_SERVER['REQUEST_TIME'];
+        $data .= $_SERVER['HTTP_USER_AGENT'];
+        $data .= $_SERVER['LOCAL_ADDR'];
+        $data .= $_SERVER['LOCAL_PORT'];
+        $data .= $_SERVER['REMOTE_ADDR'];
+        $data .= $_SERVER['REMOTE_PORT'];
+        $hash = strtoupper(hash('ripemd128', $uid . $guid . md5($data)));
+        $guid = '{' .
+            substr($hash,  0,  8) .
+            '-' .
+            substr($hash,  8,  4) .
+            '-' .
+            substr($hash, 12,  4) .
+            '-' .
+            substr($hash, 16,  4) .
+            '-' .
+            substr($hash, 20, 12) .
+            '}';
+        return $guid;
+    }
+
+    public function getPhotoPath($photoname) {
+        return APPLICATION_PATH . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'public/photo/image' . DIRECTORY_SEPARATOR . $photoname;
     }
 }

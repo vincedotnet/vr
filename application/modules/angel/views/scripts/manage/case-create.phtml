@@ -4,7 +4,7 @@
 <h1 class="page-title"><?php echo $this->title ?></h1>
 <div class="row">
     <div class="col-md-8">
-        <form role="form" method="post">
+        <form role="form" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>案例大图：</label>
                 <div class='panel panel-info'>
@@ -44,6 +44,24 @@
             <div class="form-group" style="display:none;">
                 <label>行業屬性：</label>
                 <input type="text" class="form-control" id="property" name="property" data-toggle="popover" value="">
+            </div>
+            <div class="form-group">
+                <label>gif：</label>
+                <input type="text" class="form-control" id="gif" name="gif" data-toggle="popover" value=""  readonly="readonly">
+                <input type="file" name="file_gif" id="file_gif" style="display: none" /><a id="gif_add">浏览...</a><a id="gif_del">清空</a>
+            </div>
+            <div class="form-group" >
+                <label>show gif：</label>
+                <input type="text" class="form-control" id="show_gif" name="show_gif" data-toggle="popover" value="" readonly="readonly">
+                <input type="file" name="file_show_gif" id="file_show_gif" style="display: none" /><a id="show_gif_add">浏览...</a><a id="show_gif_del">清空</a>
+            </div>
+            <div class="form-group" >
+                <label>Index：</label>
+                <select id="index" name="index">
+                    <?php for ($i = 0; $i < 101; $i++) :?>
+                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                    <?php endfor; ?>
+                </select>
             </div>
             <div class="form-group">
                 <label>分类：</label>
@@ -94,6 +112,30 @@
     })(jQuery);
 
     $(document).ready(function() {
+        $('#gif_add').click(function() {
+            $('#file_gif').click();
+        });
+
+        $('#gif_del').click(function() {
+            $('#gif').val('');
+        });
+
+        $('#show_gif_add').click(function() {
+            $('#file_show_gif').click();
+        });
+
+        $('#show_gif_del').click(function() {
+            $('#show_gif').val('');
+        });
+
+        $('#file_gif').change(function () {
+            $('#gif').val($(this).val());
+        });
+
+        $('#file_show_gif').change(function () {
+            $('#show_gif').val($(this).val());
+        });
+
         $('.category').click(function() {
             var category_id = $('#category_id').val();
             var id =  $(this).attr('value');
@@ -119,6 +161,8 @@
 
             $('#category_id').val(category_id);
         })
+
+
     })
 
     $("#save-btn").click(function() {
