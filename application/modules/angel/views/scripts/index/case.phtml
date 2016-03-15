@@ -138,6 +138,7 @@
         padding-bottom: 80px;
     }
 </style>
+
 <div class="bist01">
     <div class="container bist02">
 
@@ -146,11 +147,13 @@
             <div class="bist03">
                 <?php
                 $firstbigimg = "";
-                if (count($this->model->photo)) {
+                if($this->model->show_gif) {
+                    $firstbigimg = "/photo/image/" . $this->model->show_gif;
+                } else if (count($this->model->photo)) {
                     $ap = $this->model->photo[0];
                     $firstbigimg = $this->photoImage($ap->name . $ap->type, 'orig');
-                    $firstbigimg = "style='background-image:url(" . $firstbigimg . ");'";
                 }
+                $firstbigimg = "style='background-image:url(" . $firstbigimg . ");'";
                 ?>
                 <div class="bist04" id="bigshowfrm" <?php echo $firstbigimg ?>></div>
             </div>
@@ -160,7 +163,19 @@
 
                 <div class="bist05">
                     <div class="bist06 di4irt">
+
                         <?php $i = 0 ?>
+                        <?php if($this->model->gif): ?>
+                            <div index="<?php echo $i + 1 ?>"
+                                 source="/photo/image/<?php echo $this->model->show_gif ?>"
+                                 class="detailgalleryitm selected"
+                                 style="background-image: url(/photo/image/<?php echo $this->model->gif ?>);">
+                                <div class="clr"></div>
+                            </div>
+                            <?php $i = 1; ?>
+                        <?php endif;?>
+
+
                         <?php foreach ($this->model->photo as $p) : ?>
                             <?php
                             $clse = "";
@@ -207,8 +222,13 @@
                 <div class="col-xs-4 ceitem" id="<?php echo $p->id ?>">
                     <?php endif; ?>
                     <a target="_blank" href="/home/case/<?php echo $p->id ?>" class="ceitemct">
-                        <img src="<?php echo $this->photoImage($p->photo[0]->name . $p->photo[0]->type, 'main') ?>"
-                             class="img"/>
+                        <?php
+                        $thumbnailimg = $this->photoImage($p->photo[0]->name . $p->photo[0]->type, 'main');
+                        if($p->gif) {
+                            $thumbnailimg = '/photo/image/' . $p->gif;
+                        }
+                        ?>
+                        <span style="background-image:url(<?php echo $thumbnailimg ?>);" class="img"></span>
                     </a>
                     <a target="_blank" href="/home/case/<?php echo $p->id ?>" class="txt"><?php echo $p->name ?></a>
 
