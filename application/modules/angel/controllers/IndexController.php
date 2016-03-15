@@ -134,7 +134,7 @@ class Angel_IndexController extends Angel_Controller_Action {
             $paginator = $productModel->getByCategory($category_id);
         }
         else {
-            $paginator = $productModel->getAll(false);
+            $paginator = $productModel->getNotCategory();
         }
 
 //        $paginator->setItemCountPerPage($this->bootstrap_options['default_page_size']);//

@@ -31,6 +31,15 @@ class Product extends AbstractDocument{
     /** @ODM\String */
     protected $description;
 
+    /** @ODM\String */
+    protected $show_gif;
+
+    /** @ODM\String */
+    protected $gif;
+
+    /** @ODM\Int */
+    protected $index;
+
     /** @ODM\ReferenceMany(targetDocument="\Documents\Photo") */
     protected $photo = array();
 
