@@ -1,10 +1,10 @@
 $(document).ready(function() {
     setBlur($('.ceitem'));
 
-    $('.snsbtn.weixin').mouseenter(function(){
+    $('.snsbtn.weixin, #forweixin').mouseenter(function(){
         $('.showqrly').fadeIn(200);
     });
-    $('.snsbtn.weixin').mouseleave(function(){
+    $('.snsbtn.weixin, #forweixin').mouseleave(function(){
         $('.showqrly').fadeOut(200);
     });
 });
