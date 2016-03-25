@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>VR上合式設計</title>
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/iconfont.css" rel="stylesheet">
@@ -21,7 +21,23 @@
             <div class="col-xs-6">
                 <img src="/img/logo.png" class="bglogo" />
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-6" style="height:80px;">
+                <div class="top-I-h">
+                    <ul class="top-I-ddl">
+                        <li onclick="location.href='/'">
+                            <a href="/">HOME</a>
+                        </li>
+                        <li id="tab_2" onclick="location.href='/home/list'">
+                            <a href="/home/list">CASE</a>
+                        </li>
+                        <li id="tab_3" onclick="location.href='/home/about'">
+                            <a href="/home/about">ABOUT</a>
+                        </li>
+                        <li id="tab_4" onclick="location.href='/home/contact'">
+                            <a href="/home/contact">CONTACT</a>
+                        </li>
+                    </ul>
+                </div>
                 <ul class="big_menu">
                     <li onclick="location.href='/'">
                         <a href="/">HOME</a>

@@ -7,6 +7,28 @@ $(document).ready(function() {
     $('.snsbtn.weixin, #forweixin').mouseleave(function(){
         $('.showqrly').fadeOut(200);
     });
+
+    $(window).resize(function() {
+        if($(window).width() < 690) {
+            $('.container').width('auto');
+            $('.home_block.fullheight').addClass('sm');
+            $('.ceitem').addClass('sm');
+            $('.top-I-h').show();
+            $('.big_menu').hide();
+            $('.bist03').addClass('sm');
+        } else {
+            $('.home_block.fullheight').removeClass('sm');
+            $('.ceitem').removeClass('sm');
+            $('.top-I-h').hide();
+            $('.big_menu').show();
+            $('.bist03').removeClass('sm');
+        }
+    });
+    $(window).resize();
+
+    $('.top-I-h').click(function(){
+        $('.top-I-ddl').toggle();
+    });
 });
 
 function setBlur(target) {
