@@ -800,6 +800,119 @@ class Angel_ManageController extends Angel_Controller_Action {
     }
 
     /*********************************************************
+     *关于我们
+     *
+     * ******************************************************/
+    public function aboutCreateAction() {
+        $aboutModel = $this->getModel('about');
+
+        if ($this->request->isPost()) {
+            $result = 0;
+            // POST METHOD
+
+            $photo = $this->decodePhoto();
+
+            try {
+                $result = $aboutModel->addAbout($photo);
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+            }
+            if ($result) {
+                $this->_redirect($this->view->url(array(), 'manage-result') . '?redirectUrl=' . $this->view->url(array(), 'manage-index'));
+            } else {
+                $this->_redirect($this->view->url(array(), 'manage-result') . '?error=' . $error);
+            }
+        } else {
+            $result = $aboutModel->getAll(false);
+
+            $count = count($result);
+
+            if ($count == 0) {
+                $this->view->title = "创建关于我们";
+            }
+            else {
+                $id = null;
+
+                foreach ($result as $r) {
+                    $id = $r->id;
+
+                    break;
+                }
+
+                $this->_redirect("/manage/about/save/". $id);
+            }
+        }
+    }
+
+    public function aboutSaveAction() {
+        $notFoundMsg = '未找到关于我们';
+        $aboutModel = $this->getModel('about');
+
+        if ($this->request->isPost()) {
+            $result = 0;
+            // POST METHOD
+
+            $id = $this->request->getParam('id');
+            // POST METHOD
+            $photo = $this->decodePhoto();
+
+            try {
+                $result = $aboutModel->saveAbout($id, $photo);
+            } catch (Angel_Exception_Contact $e) {
+                $error = $e->getDetail();
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+            }
+
+            if ($result) {
+                $this->_redirect($this->view->url(array(), 'manage-result') . '?redirectUrl=' . $this->view->url(array(), 'manage-index'));
+            } else {
+                $this->_redirect($this->view->url(array(), 'manage-result') . '?error=' . $error);
+            }
+        } else {
+            // GET METHOD
+            $this->view->title = "编辑关于我们";
+
+            $id = $this->request->getParam("id");
+
+            if ($id) {
+
+                $target = $aboutModel->getById($id);
+
+                if (!$target) {
+                    $this->_redirect($this->view->url(array(), 'manage-result') . '?error=' . $notFoundMsg);
+                }
+
+                $photo = $target->photo;
+
+                if ($photo) {
+                    $saveObj = array();
+                    foreach ($photo as $p) {
+                        try {
+                            $name = $p->name;
+                        } catch (Doctrine\ODM\MongoDB\DocumentNotFoundException $e) {
+                            $this->view->imageBroken = true;
+                            continue;
+                        }
+                        $saveObj[$name] = $this->view->photoImage($p->name . $p->type, 'normal');
+                        if (!$p->thumbnail) {
+                            $saveObj[$name] = $this->view->photoImage($p->name . $p->type);
+                        }
+                    }
+                    if (!count($saveObj))
+                        $saveObj = false;
+//                    print_r($saveObj); exit;
+                    $this->view->photo = $saveObj;
+                }
+
+                $this->view->model = $target;
+            } else {
+                $this->_redirect($this->view->url(array(), 'manage-result') . '?error=' . $notFoundMsg);
+            }
+        }
+    }
+
+    /*********************************************************
      *联系我们
      *
      * ******************************************************/

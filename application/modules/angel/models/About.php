@@ -9,16 +9,16 @@
 class Angel_Model_About extends Angel_Model_AbstractModel {
     protected $_document_class = '\Documents\About';
 
-    public  function addAbout($title, $title_en, $content, $content_en, $simple_content, $simple_content_en, $photo) {
-        $data = array("title"=>$title, "title_en"=>$title_en, "content"=>$content, "content_en"=>$content_en, "simple_content"=>$simple_content, "simple_content_en"=>$simple_content_en, "photo"=>$photo);
+    public  function addAbout($photo) {
+        $data = array("photo"=>$photo);
 
         $result = $this->add($data);
 
         return $result;
     }
 
-    public function saveAbout($id, $title, $title_en, $content, $content_en, $simple_content, $simple_content_en, $photo) {
-        $data = array("title"=>$title, "title_en"=>$title_en, "content"=>$content, "content_en"=>$content_en, "simple_content"=>$simple_content, "simple_content_en"=>$simple_content_en, "photo"=>$photo);
+    public function saveAbout($id,$photo) {
+        $data = array("photo"=>$photo);
 
         $result = $this->save($id, $data);
 

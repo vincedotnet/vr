@@ -18,25 +18,30 @@
     }
 </style>
 <div style="height:80px"></div>
-<img src="/img/about/slides/1.jpg" class="dwimg"/>
-<img src="/img/about/slides/2.jpg" class="dwimg"/>
-<img src="/img/about/slides/3.jpg" class="dwimg"/>
-<img src="/img/about/slides/4.jpg" class="dwimg"/>
-<img src="/img/about/slides/5.jpg" class="dwimg"/>
-<img src="/img/about/slides/6.jpg" class="dwimg"/>
-<img src="/img/about/slides/7.jpg" class="dwimg"/>
-<img src="/img/about/slides/8.jpg" class="dwimg"/>
-<img src="/img/about/slides/9.jpg" class="dwimg"/>
-<img src="/img/about/slides/10.jpg" class="dwimg"/>
-<img src="/img/about/slides/11.jpg" class="dwimg"/>
-<img src="/img/about/slides/12.jpg" class="dwimg"/>
-<img src="/img/about/slides/13.jpg" class="dwimg"/>
-<img src="/img/about/slides/14.jpg" class="dwimg"/>
-<img src="/img/about/slides/15.jpg" class="dwimg"/>
-<img src="/img/about/slides/16.jpg" class="dwimg"/>
-<img src="/img/about/slides/17.jpg" class="dwimg"/>
-<img src="/img/about/slides/18.jpg" class="dwimg"/>
-<img src="/img/about/slides/19.jpg" class="dwimg"/>
+    <?php if ($this->model == 1) :?>
+        <?php foreach ($this->photo as $p) :?>
+            <img src="<?php echo $p; ?>" class="dwimg"/>
+        <?php endforeach; ?>
+    <?php endif; ?>
+<!--<img src="/img/about/slides/1.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/2.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/3.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/4.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/5.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/6.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/7.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/8.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/9.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/10.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/11.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/12.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/13.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/14.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/15.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/16.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/17.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/18.jpg" class="dwimg"/>-->
+<!--<img src="/img/about/slides/19.jpg" class="dwimg"/>-->
 
 <!--<div style="background:#0011E3;color:#FFF;">-->
 <!--    <div style="padding:100px 0 30px 0;text-align:center;font-size:38px;">-->
@@ -170,7 +175,7 @@
 <!--            </tr>-->
 <!--        </table>-->
 <!--    </div>-->
-<!--</div>-->
+</div>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#tab_3').addClass('selected');

@@ -197,6 +197,55 @@ class Angel_IndexController extends Angel_Controller_Action {
      *
      * *****************************************************/
     public function aboutAction() {
+        $aboutModel = $this->getModel('about');
+
+        $result = $aboutModel->getAll(false);
+
+        $count = count($result);
+
+        if ($count != 0) {
+            $id = null;
+
+            foreach ($result as $r) {
+                $id = $r->id;
+
+                break;
+            }
+
+            $target = $aboutModel->getById($id);
+
+            if (!$target) {
+                $this->_redirect($this->view->url(array(), 'manage-result') . '?error=' . $notFoundMsg);
+            }
+
+            $photo = $target->photo;
+
+            if ($photo) {
+                $saveObj = array();
+                foreach ($photo as $p) {
+                    try {
+                        $name = $p->name;
+                    } catch (Doctrine\ODM\MongoDB\DocumentNotFoundException $e) {
+                        $this->view->imageBroken = true;
+                        continue;
+                    }
+                    $saveObj[$name] = $this->view->photoImage($p->name . $p->type, 'normal');
+                    if (!$p->thumbnail) {
+                        $saveObj[$name] = $this->view->photoImage($p->name . $p->type);
+                    }
+                }
+                if (!count($saveObj))
+                    $saveObj = false;
+//                    print_r($saveObj); exit;
+                $this->view->photo = $saveObj;
+            }
+
+            $this->view->model = 1;
+        }
+        else {
+            $this->view->model = 0;
+        }
+
         $this->_helper->layout->setLayout('main');
     }
 
