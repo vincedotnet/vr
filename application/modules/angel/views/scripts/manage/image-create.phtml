@@ -6,22 +6,29 @@
     <div class="col-md-8">
         <form role="form" method="post">
             <div class="form-group">
-                <label>关于我们图片：</label>
+                <label>幻灯片图片：</label>
                 <div class='panel panel-info'>
                     <div id="gy-photo" class='panel-body gy-photo'>
                     </div>
                 </div>
                 <input type="hidden" name="photo" id="photo"/>
             </div>
-
-            <button type="button" id="save-btn" class="btn btn-default">确认提交</button>
+            <div  style="display: none"  class="form-group">
+                <label>展示图文字：</label>
+                <input type="text" class="form-control" id="remark" name="remark" data-toggle="popover" value="">
+            </div>
+            <!--英文部分-->
+            <div style="display: none"  class="form-group">
+                <label>展示图文字(英文)：</label>
+                <input type="text" class="form-control" id="remark_en" name="remark_en" data-toggle="popover" value="">
+            </div>
+            <button type="submit" id="save-btn" class="btn btn-default">确认提交</button>
         </form>
     </div>
 </div>
-
 <script type="text/javascript">
     (function($) {
-        $('.gy-photo').photoSelector(false, <?php echo json_encode($this->photo) ?>);
+        $('.gy-photo').photoSelector();
 
         $('#save-btn').click(function() {
             var save = $('#gy-photo').attr('save');
@@ -145,9 +152,4 @@
 
         sortValue();
     }
-
-    $("#save-btn").click(function() {
-        $("form").submit();
-    });
-
 </script>

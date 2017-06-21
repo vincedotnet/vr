@@ -6,19 +6,50 @@
     <div class="col-md-8">
         <form role="form" method="post">
             <div class="form-group">
-                <label>关于我们图片：</label>
+                <label>新闻图片：</label>
                 <div class='panel panel-info'>
                     <div id="gy-photo" class='panel-body gy-photo'>
                     </div>
                 </div>
                 <input type="hidden" name="photo" id="photo"/>
             </div>
+            <div class="clear-20"></div>
+            <div class="form-group">
+                <label>新闻标题：</label>
+                <input type="text" class="form-control" id="title" name="title" data-toggle="popover" value="<?php echo $this->model->title ?>">
+            </div>
+            <div class="form-group">
+                <label>新闻副标题：</label>
+                <input type="text" class="form-control" id="subtitle" name="subtitle" data-toggle="popover" value="<?php echo $this->model->subtitle ?>">
+            </div>
+            <div class="form-group">
+                <label>新闻内容：</label>
+                <input type="hidden" id="content" name="content">
+                <script type="text/plain" id="editor_content" name="editor_content" style="width:1000px;height:240px;">
+                    <p>请输入新闻内容</p>
+                </script>
+            </div>
+            <!--英文部分-->
+            <div class="form-group">
+                <label>新闻标题(英文)：</label>
+                <input type="text" class="form-control" id="title_en" name="title_en" data-toggle="popover" value="<?php echo $this->model->title_en ?>">
+            </div>
+            <div class="form-group">
+                <label>新闻副标题(英文)：</label>
+                <input type="text" class="form-control" id="subtitle_en" name="subtitle_en" data-toggle="popover" value="<?php echo $this->model->subtitle_en ?>">
+            </div>
+            <div class="form-group">
+                <label>新闻内容(英文)：</label>
+                <input type="hidden" id="content_en" name="content_en">
+                <script type="text/plain" id="editor_content_en" name="editor_content_en" style="width:1000px;height:240px;">
+                    <p>请输入新闻内容(英文)</p>
+                </script>
+            </div>
 
             <button type="button" id="save-btn" class="btn btn-default">确认提交</button>
         </form>
     </div>
 </div>
-
 <script type="text/javascript">
     (function($) {
         $('.gy-photo').photoSelector(false, <?php echo json_encode($this->photo) ?>);
@@ -147,7 +178,35 @@
     }
 
     $("#save-btn").click(function() {
+        var html_description = UM.getEditor('editor_content').getContent()
+        $("#content").val(html_description);
+
+        var html_description_en = UM.getEditor('editor_content_en').getContent()
+        $("#content_en").val(html_description_en);
+
         $("form").submit();
     });
 
+    //实例化编辑器
+    var um = UM.getEditor('editor_content');
+
+    um.addListener('blur',function(){
+        $('#focush2').html('编辑器失去焦点了')
+    });
+    um.addListener('focus',function(){
+        $('#focush2').html('')
+    });
+
+    um.setContent('<?php echo $this->model->content ?>');
+
+    var um1 = UM.getEditor('editor_content_en');
+
+    um1.addListener('blur',function(){
+        $('#focush2').html('编辑器失去焦点了')
+    });
+    um1.addListener('focus',function(){
+        $('#focush2').html('')
+    });
+
+    um1.setContent('<?php echo $this->model->content_en ?>');
 </script>
